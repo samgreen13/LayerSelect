@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Layer Select</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin=""/>
+
+        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+        integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+        crossorigin=""></script>
+		
+		<script type="text/javascript" src="Shapefiles/1990.js"></script>
+		<script type="text/javascript" src="Shapefiles/2018.js"></script>
+		
+		
+		<style type="text/css">
+		  html, body { margin: 0; padding: 0; height: 100%; }
+		  #map { min-height: 100%; }
+		
+		  /* Optional: adjust the values below to change the appearance of the legend */
+          .legend {
+              padding: 6px 8px;
+              line-height: 18px;
+              background: rgba(255,255,255,0.9);
+              box-shadow: 0 0 15px rgba(0,0,0,0.2);
+              border-radius: 5px;
+          }
+
+           /* Optional: adjust the values below to change the appearance of the legend color boxes */
+           .legend i {
+              width: 18px;
+              height: 18px;
+              float: left;
+              margin-right: 8px;
+              opacity: 0.7;
+          }
+		</style>
+    </head>
+
+    <body>
+        <div id="map"></div>
+
+        <script type="text/javascript">
+
+          var map = L.map('map', {
+              center: [42.0599185,-87.7117],
+              zoom: 19
+          });
+
+		  var TreeIcon = L.icon({
+			iconUrl: 'tree-silhouette.png', // url that links to the icon image file
+			iconSize:     [38, 38], // size of the icon image in pixels
+			iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+			popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+		  });
+
+          var canvas = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+			attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Imagery © Mapbox',
+			maxZoom: 23,
+			minZoom: 18,
+			id: 'mapbox.light',
+			accessToken:'pk.eyJ1Ijoic2xncmVlbjMiLCJhIjoiY2psZnJoMmY1MGN5NjNxdXh4OG56amRwOSJ9.c4WrVotEDOk2fNtcVAoxlg'
+		  }).addTo(map);
+
+		  var imagery = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+			attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Imagery © Mapbox',
+			maxZoom: 23,
+			minZoom: 18,
+			id: 'mapbox.satellite',
+			accessToken:'pk.eyJ1Ijoic2xncmVlbjMiLCJhIjoiY2psZnJoMmY1MGN5NjNxdXh4OG56amRwOSJ9.c4WrVotEDOk2fNtcVAoxlg'
+		  });
+		  
+		  var streets = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+			attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Imagery © Mapbox',
+			maxZoom: 23,
+			minZoom: 18,
+			id: 'mapbox.streets',
+			accessToken:'pk.eyJ1Ijoic2xncmVlbjMiLCJhIjoiY2psZnJoMmY1MGN5NjNxdXh4OG56amRwOSJ9.c4WrVotEDOk2fNtcVAoxlg'
+		  });
+		  
+		    var outdoors = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+			attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Imagery © Mapbox',
+			maxZoom: 23,
+			minZoom: 18,
+			id: 'mapbox.outdoors',
+			accessToken:'pk.eyJ1Ijoic2xncmVlbjMiLCJhIjoiY2psZnJoMmY1MGN5NjNxdXh4OG56amRwOSJ9.c4WrVotEDOk2fNtcVAoxlg'
+		  });
+
+
+            function style1(feature){
+			 return {
+				fillColor: getColor2(feature.properties.REALM),   // pop_den is the field name for the population density data
+				weight: 2,
+				opacity: 1,
+				color: 'black',
+				fillOpacity: 0.9,
+				dashArray: "4",
+				icon: TreeIcon,
+			 };
+			}	
+			
+			function style2(feature){
+			 return {
+				fillColor: getColor2(feature.properties.REALM),   // pop_den is the field name for the population density data
+				weight: 2,
+				opacity: 1,
+				color: 'black',
+				fillOpacity: 0.9,
+				dashArray: "4",
+				icon: TreeIcon,
+			 };
+			}	
+			
+			function Classify(type) {
+				switch (type) {
+					case 'ash': return "#bfef45";
+					case 'black cherry':   return "#660066";
+					case 'basswood':   return "#ffe119";
+					case 'box elder':   return  "#e6194B";
+					case 'bur oak':   return  "#4363d8";
+					case 'butternut':   return  "#ffd8b1";
+					case 'elm':   return  "#3cb44b";
+					case 'norway maple':   return  "#fabebe";
+					case 'red oak':   return  "#911eb4";
+					case 'shagbark hickory':   return  "#aaffc3";
+					case 'silver maple':   return  "#9A6324";
+					case 'sugar maple':   return  "#f58231";
+					case 'swamp white oak':   return "#469990";
+					case 'white oak':   return  "#42d4f4";
+				}
+				}
+			
+			function Classify2(type) {
+				switch (type) {
+					case 'Ash': return "#bfef45";
+					case 'Maple':   return "#800000";
+					case 'Box Elder':   return  "#e6194B";
+					case 'Norway Maple':   return  "#fabebe";
+					case 'Silver Maple':   return  "#9A6324";
+					case 'Sugar Maple':   return  "#f58231";
+					case 'Basswood':   return "#ffe119";
+					case 'Oak': return "#000075";
+					case 'Bur Oak':   return  "#4363d8";
+					case 'Red Oak':   return  "#911eb4";
+					case 'Swamp White Oak':   return "#469990";
+					case 'White Oak':   return  "#42d4f4";
+					case 'Butternut':   return  "#ffd8b1";
+					case 'Elm':   return  "#3cb44b";
+					case 'Hickory':   return  "#aaffc3";
+					case 'Birch': return "#fffac8";
+					case 'Crabapple': return "#e6beff";
+					case 'Mulberry': return "#f032e6";	
+					case 'Unkown': return "#a9a9a9";
+				}
+				}
+
+			
+		  var old = L.geoJson(data1, {
+			    //pointToLayer: function(feature, latlng) {
+                //var smallIcon = new L.Icon({
+                    
+               //         iconSize: [27, 27],
+               //         iconAnchor: [13, 27],
+               //         popupAnchor:  [1, -24],
+               //         iconUrl: 'tree-silhouette.png'
+                    
+                //});
+              //  return L.marker(latlng, {icon: smallIcon});
+            //},
+			 
+			 pointToLayer: function(feature, latlng) {
+				return L.circleMarker (latlng,  {
+				radius: 8,
+				fillColor: Classify(feature.properties.Species1990),
+				color: "#000",
+				weight: 1,
+				opacity: 1,
+				fillOpacity: 0.8
+			}
+				);
+			}
+			
+		  }).addTo(map);
+		  
+		   var legend1 = L.control({position: 'bottomright'}); // Try the other three corners if you like.
+
+              legend1.onAdd = function (map) {
+
+                 var div = L.DomUtil.create('div', 'legend'),
+				labels = [ "ash", "black cherry", "basswood", "box elder", "bur oak", "butternut", "elm", "norway maple", "red oak", "shagbark hickory", "silver maple", "sugar maple", "swamp white oak", "white oak"]; // The break values to define the intervals of population, note we begin from 0 here
+
+				div.innerHTML = '<b>1990 <br></b>'; // The legend title (HTML-based), in this case it's Population Density 2011
+
+				// Loop through our the classes and generate a label with a color box for each interval.
+				// If you are creating a choropleth map, you DO NOT need to change lines below.
+				for (var i = 0; i < labels.length; i++) {
+					div.innerHTML +=
+				
+					'<i style="background:' + Classify(labels[i]) + '"></i>' +
+					(labels[i] ?  labels[i] + '<br>' : '+');
+				}
+
+                  return div;
+              };
+            
+            legend1.addTo(map);
+			
+			var modern = L.geoJson(data2, {
+			//pointToLayer: function(feature, latlng) {
+            //    var smallIcon = new L.Icon({
+            //        
+            //            iconSize: [27, 27],
+            //            iconAnchor: [13, 27],
+            //            popupAnchor:  [1, -24],
+            //            iconUrl: 'tree-silhouette.png'
+                    
+            //    });
+            //    return L.marker(latlng, {icon: smallIcon});
+            //},
+			pointToLayer: function(feature, latlng) {
+				return L.circleMarker (latlng,  {
+				radius: 8,
+				fillColor: Classify2(feature.properties.Species),
+				color: "#000",
+				weight: 1,
+				opacity: 1,
+				fillOpacity: 0.8
+			}
+				);
+			}
+		  }).addTo(map);
+			
+		  
+		  
+
+		  var legend2 = L.control({position: 'bottomright'}); // Try the other three corners if you like.
+
+              legend2.onAdd = function (map) {
+
+                 var div = L.DomUtil.create('div', 'legend'),
+				labels = [ "Ash", "Maple", "Basswood", "Box Elder", "Bur Oak", "Butternut", "Elm", "Norway Maple", "Red Oak", "Hickory", "Silver Maple", "Sugar Maple", "Swamp White Oak", "White Oak", "Birch", "Crabapple", "Mulberry"]; 
+
+				div.innerHTML = '<b>2018 <br></b>'; // The legend title (HTML-based), in this case it's Population Density 2011
+
+				// Loop through our the classes and generate a label with a color box for each interval.
+				// If you are creating a choropleth map, you DO NOT need to change lines below.
+				for (var i = 0; i < labels.length; i++) {
+					div.innerHTML +=
+				
+					'<i style="background:' + Classify2(labels[i]) + '"></i>' +
+					(labels[i] ?  labels[i] + '<br>' : '+');
+				}
+
+                  return div;
+              };
+            
+            legend2.addTo(map);
+		
+
+
+		
+		  var basemaps = {
+			"Light Canvas": canvas,
+			"Satellite Imagery": imagery,
+			"Streets": streets,
+			"Topography": outdoors
+		  };
+
+		  var overlaymaps = {
+			"1990": old,
+			"2018": modern,
+		  };
+		  
+		  L.control.layers(basemaps, overlaymaps).addTo(map);
+		  
+		  // Removing the legend when the layer is removed
+		  map.on('overlayremove', function(eventLayer){
+			if (eventLayer.name == 'Marine Ecoregions'){ // We use the key/display name to refer to the layer
+			  map.removeControl(legend1); // legend is the variable name of the layer legend
+			}
+		  });
+
+		   map.on('overlayremove', function(eventLayer){
+			if (eventLayer.name == 'Terrestrial Ecoregions'){ // We use the key/display name to refer to the layer
+			  map.removeControl(legend2); // legend is the variable name of the layer legend
+			}
+		  });
+		  // Adding the legend when the layer is added
+		  map.on('overlayadd', function(eventLayer){
+			if (eventLayer.name == 'Marine Ecoregions'){
+			  legend1.addTo(map);
+			}
+		  });
+		  
+		  map.on('overlayadd', function(eventLayer){
+			if (eventLayer.name == 'Terrestrial Ecoregions'){
+			  legend2.addTo(map);
+			}
+		  });
+		  
+        </script>
+   </body>
+</html>

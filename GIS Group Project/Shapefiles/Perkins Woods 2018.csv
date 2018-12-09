@@ -1,0 +1,117 @@
+Point,Point_Num,Species,Distance _f t,Diameter_in,Basal_area_sf
+1 NE,1.1,Crabapple,23,5,0.14
+1 NW,1.2,Basswood,27,9,0.44
+1 SE,1.3,Elm,11,5,0.14
+1 SW,1.4,Elm,21,4,0.09
+2 NE,2.1,Basswood,13,10,0.55
+2 NW,2.2,Swamp White Oak,24,16,1.4
+2 SE,2.3,Basswood,10,9,0.44
+2 SW,2.4,Basswood,32,7,0.27
+3 NE,3.1,Norway Maple,25,10,0.55
+3 NW,3.2,Norway Maple,38,11,0.66
+3 SE,3.3,Swamp White Oak,7.5,10,0.55
+3 SW,3.4,Red Oak,17,24,3.14
+4 NE,4.1,Swamp White Oak,14,10,0.55
+4 NW ,4.2,Silver Maple,6.5,8,0.35
+6 NE,6.1,Basswood,26,5.5,0.16
+6 NW,6.2,Bur Oak,14,6.5,0.23
+6 SE,6.3,Basswood,26,15,1.23
+6 SW,6.4,Basswood,10,9,0.44
+4 SE,4.3,Norway Maple,27,9,0.44
+7 NE,7.1,Box Elder,6.5,6,0.2
+7 NW,7.2,Swamp White Oak,9.5,19,1.2
+7 SE,7.3,Swamp White Oak,13.5,18.5,1.87
+7 SW,7.4,Swamp White Oak,28,15,1.23
+4 SW,4.4,Norway Maple,31,10,0.55
+8 NE,8.1,Silver Maple,5,3,0.05
+8 NW,8.2,Bur Oak,15.5,21,2.4
+8 SE,8.3,Basswood,9,19,1.97
+8 SW,8.4,Basswood,8,4,0.09
+9 NE,9.1,Swamp White Oak,0,16,1.4
+9 NW,9.2,Oak,4,21,2.4
+9 SE,9.3,Maple,18,15,1.23
+9 SW,9.4,Norway Maple,10,24,3.14
+10 NE,10.1,Maple,30,13,0.92
+10 NW,10.2,Unknown,30,52,14.74
+10 SE,10.3,Maple,3,26,3.69
+10 SW,10.4,Maple,17,6,0.2
+11 NE,11.1,White Oak,9,28,4.27
+11 NW,11.2,Birch,7,4,0.087
+11 SE,11.3,Hickory,11,13,0.92
+11 SW,11.4,Hickory,3,12,0.79
+12 NE,12.1,Norway Maple,10,2,0.01
+12 NW,12.2,Basswood,13,18,1.77
+12 SE,12.3,Bur Oak,10.5,15,1.23
+12 SW,12.4,Norway Maple,4.5,3,0.05
+13 NE,13.1,Box Elder,34,7,0.27
+13 NW,13.2,Basswood,4,5,0.14
+13 SE,13.3,Box Elder,20,2,0.01
+13 SW,13.4,Basswood,12,35,6.68
+14 NE,14.1,Silver Maple,14,10,0.55
+14 NW,14.2,Box Elder,13.5,3,0.05
+14 SE,14.3,White Oak,17.5,14,1.07
+14 SW,14.4,Silver Maple,29,5,0.14
+15 NE,15.1,Silver Maple,41,28,4.27
+15 NW,15.2,Silver Maple,12,25,3.41
+15 SE,15.3,Elm,28.5,19,1.97
+15 SW,15.4,Silver Maple,6,31,5.24
+16 NE,16.1,Basswood,4.5,51,14.18
+16 NW,16.2,Basswood,12.5,10,0.55
+16 SE,16.3,Elm,18,9,0.44
+16 SW,16.4,Silver Maple,23.5,20,2.18
+17 NE,17.1,Silver Maple,23,7.5,0.35
+17 NW,17.2,Silver Maple,40,9.5,0.55
+17 SE,17.3,Hickory,11.5,8,0.35
+17 SW,17.4,Ash,20,5,0.14
+18 NE,18.1,Basswood,6,2.5,0.05
+18 NW,18.2,Elm,15,14.5,1.23
+18 SE,18.3,Ash,15.5,1,0.01
+18 SW,18.4,Silver Maple,21,3,0.05
+19 NE,19.1,Basswood,10.5,6,0.2
+19 NW,19.2,Basswood,11,5.5,0.16
+19 SE,19.3,Bur Oak,58,35,6.68
+19 SW,19.4,Basswood,27,5,0.14
+20 NE,20.1,Basswood,16,15,1.23
+20 NW,20.2,Basswood,38,10,0.55
+20 SE,20.3,Silver Maple,11,34,6.3
+20 SW,20.4,Silver Maple,17,10,0.55
+21 NE,21.1,Basswood,35,11,0.66
+21 NW,21.2,Elm,10,8,0.35
+21 SE,21.3,Silver Maple,4,5,0.14
+21 SW,21.4,Silver Maple,40,8,0.35
+22 NE,22.1,Mulberry,4.5,9,0.44
+22 NW,22.2,Silver Maple,11.5,14,1.07
+22 SE,22.3,Swamp White Oak,19,17,1.58
+22 SW,22.4,Silver Maple,18.5,10,0.55
+23 NE,23.1,Basswood,32,13,0.92
+23 NW,23.2,Silver Maple,15,23,2.88
+23 SE,23.3,Basswood,25,9,0.44
+23 SW,23.4,Basswood,17.5,16,1.4
+24 NE,24.1,Basswood,60,20,2.8
+24 NW,24.2,Box Elder,21,7,0.27
+24 SE,24.3,Basswood,43,7,0.27
+24 SW,24.4,White Oak,53,18,1.77
+25 NE,25.1,Basswood,7.5,9,0.44
+25 NW,25.2,Basswood,7.5,6,0.2
+25 SE,25.3,Ash,31.5,6,0.2
+25 SW,25.4,Basswood,36,11,0.66
+26 NE,26.1,Swamp White Oak,13,24,3.14
+26 NW,26.2,Silver Maple,25,14,1.07
+26 SE,26.3,Elm,11,7,0.27
+26 SW,26.4,Elm,27,5,0.14
+27 NE,27.1,Basswood,5,10,0.55
+27 NW,27.2,Basswood,35,20,2.18
+27 SE,27.3,Basswood,3,19,1.97
+27 SW,27.4,Elm,8,7,0.27
+28 NE,28.1,Basswood,16,4,0.087
+28 NW,28.2,Swamp White Oak,6,12,0.79
+28 SE,28.3,Hickory,30,4,0.087
+28 SW,28.4,Silver Maple,5,13,0.92
+35 NE,35.1,Bur Oak,17,19,1.97
+35 NW,35.2,Basswood,22,8,0.35
+35 SE,35.3,Basswood,20,5,0.14
+35 SW,35.4,Basswood,16,12,0.79
+,,Total Distance,2059,,
+,,Mean Distance,18.38392857,,
+,,Mean Area per Tree,337.9688297,,
+,,Trees per Acre,128.8876256,,
