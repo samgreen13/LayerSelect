@@ -275,30 +275,18 @@
 		  
 		  L.control.layers(basemaps, overlaymaps).addTo(map);
 		  
-		  // Removing the legend when the layer is removed
-		  map.on('overlayremove', function(eventLayer){
-			if (eventLayer.name == 'Marine Ecoregions'){ // We use the key/display name to refer to the layer
-			  map.removeControl(legend1); // legend is the variable name of the layer legend
-			}
-		  });
-
-		   map.on('overlayremove', function(eventLayer){
-			if (eventLayer.name == 'Terrestrial Ecoregions'){ // We use the key/display name to refer to the layer
-			  map.removeControl(legend2); // legend is the variable name of the layer legend
-			}
-		  });
-		  // Adding the legend when the layer is added
-		  map.on('overlayadd', function(eventLayer){
-			if (eventLayer.name == 'Marine Ecoregions'){
-			  legend1.addTo(map);
-			}
-		  });
-		  
-		  map.on('overlayadd', function(eventLayer){
-			if (eventLayer.name == 'Terrestrial Ecoregions'){
-			  legend2.addTo(map);
-			}
-		  });
+		    map.on('overlaylayerchange', function(eventLayer){
+          if (eventLayer.name === '1990'){
+            map.removeControl(currentlegend);
+            currentlegend = legend_q;
+            legend_q.addTo(map);
+          }
+          else if (eventLayer.name === '2018'){
+            map.removeControl(currentlegend);
+            currentlegend = legend_ei;
+            legend_ei.addTo(map);
+          }
+	  })		    
 		  
         </script>
    </body>
