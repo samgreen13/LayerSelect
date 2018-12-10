@@ -218,13 +218,13 @@
 		    map.on('baselayerchange', function(eventLayer){
           if (eventLayer.name === 'old'){
             map.removeControl(currentlegend);
-            currentlegend = legend_q;
-            legend_q.addTo(map);
+            currentlegend = legend1;
+            legend1.addTo(map);
           }
           else if (eventLayer.name === 'modern'){
             map.removeControl(currentlegend);
-            currentlegend = legend_ei;
-            legend_ei.addTo(map);
+            currentlegend = legend2;
+            legend2.addTo(map);
           }
 	  })		    
 		  
