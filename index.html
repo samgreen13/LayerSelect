@@ -55,37 +55,6 @@
 			accessToken:'pk.eyJ1Ijoic2xncmVlbjMiLCJhIjoiY2psZnJoMmY1MGN5NjNxdXh4OG56amRwOSJ9.c4WrVotEDOk2fNtcVAoxlg'
 		  });
           });
-
-		  var TreeIcon = L.icon({
-			iconUrl: 'tree-silhouette.png', // url that links to the icon image file
-			iconSize:     [38, 38], // size of the icon image in pixels
-			iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
-			popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
-		  });
-
-          var canvas = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-			attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Imagery © Mapbox',
-			maxZoom: 23,
-			minZoom: 18,
-			id: 'mapbox.light',
-			accessToken:'pk.eyJ1Ijoic2xncmVlbjMiLCJhIjoiY2psZnJoMmY1MGN5NjNxdXh4OG56amRwOSJ9.c4WrVotEDOk2fNtcVAoxlg'
-		  }).addTo(map);
-
-		  var imagery = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-			attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Imagery © Mapbox',
-			maxZoom: 23,
-			minZoom: 18,
-			id: 'mapbox.satellite',
-			accessToken:'pk.eyJ1Ijoic2xncmVlbjMiLCJhIjoiY2psZnJoMmY1MGN5NjNxdXh4OG56amRwOSJ9.c4WrVotEDOk2fNtcVAoxlg'
-		  });
-		  
-		  var streets = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-			attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Imagery © Mapbox',
-			maxZoom: 23,
-			minZoom: 18,
-			id: 'mapbox.streets',
-			accessToken:'pk.eyJ1Ijoic2xncmVlbjMiLCJhIjoiY2psZnJoMmY1MGN5NjNxdXh4OG56amRwOSJ9.c4WrVotEDOk2fNtcVAoxlg'
-		  });
 		  
 		    var outdoors = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 			attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Imagery © Mapbox',
@@ -269,20 +238,13 @@
 
 		
 		  var basemaps = {
-			"Light Canvas": canvas,
-			"Satellite Imagery": imagery,
-			"Streets": streets,
-			"Topography": outdoors
-		  };
-
-		  var overlaymaps = {
 			"1990": old,
 			"2018": modern,
 		  };
 		  
-		  L.control.layers(basemaps, overlaymaps).addTo(map);
+		  L.control.layers(basemaps).addTo(map);
 		  
-		    map.on('overlaylayerchange', function(eventLayer){
+		    map.on('baselayerchange', function(eventLayer){
           if (eventLayer.name === '1990'){
             map.removeControl(currentlegend);
             currentlegend = legend_q;
