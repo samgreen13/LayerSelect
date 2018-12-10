@@ -46,7 +46,14 @@
 
           var map = L.map('map', {
               center: [42.0599185,-87.7117],
-              zoom: 19
+              zoom: 19,
+	      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+			attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Imagery © Mapbox',
+			maxZoom: 23,
+			minZoom: 18,
+			id: 'mapbox.outdoors',
+			accessToken:'pk.eyJ1Ijoic2xncmVlbjMiLCJhIjoiY2psZnJoMmY1MGN5NjNxdXh4OG56amRwOSJ9.c4WrVotEDOk2fNtcVAoxlg'
+		  });
           });
 
 		  var TreeIcon = L.icon({
