@@ -275,7 +275,7 @@
 		  
 		  L.control.layers(basemaps, overlaymaps).addTo(map);
 		  
-		    map.on('baselayerchange', function(eventLayer){
+		    map.on('overlaylayerchange', function(eventLayer){
           if (eventLayer.name === '1990'){
             map.removeControl(currentlegend);
             currentlegend = legend_q;
