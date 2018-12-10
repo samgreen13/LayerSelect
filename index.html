@@ -130,28 +130,7 @@
 			}
 			
 		  }).addTo(map);
-		  
-		   var legend1 = L.control({position: 'bottomright'}); // Try the other three corners if you like.
-
-              legend1.onAdd = function (map) {
-
-                 var div = L.DomUtil.create('div', 'legend'),
-				labels = [ "ash", "black cherry", "basswood", "box elder", "bur oak", "butternut", "elm", "norway maple", "red oak", "shagbark hickory", "silver maple", "sugar maple", "swamp white oak", "white oak"]; // The break values to define the intervals of population, note we begin from 0 here
-
-				div.innerHTML = '<b>1990 <br></b>'; // The legend title (HTML-based), in this case it's Population Density 2011
-
-				// Loop through our the classes and generate a label with a color box for each interval.
-				// If you are creating a choropleth map, you DO NOT need to change lines below.
-				for (var i = 0; i < labels.length; i++) {
-					div.innerHTML +=
-				
-					'<i style="background:' + Classify(labels[i]) + '"></i>' +
-					(labels[i] ?  labels[i] + '<br>' : '+');
-				}
-
-                  return div;
-              };
-            
+	
        
 			
 			var modern = L.geoJson(data2, {
@@ -179,7 +158,27 @@
 			}
 		  }).addTo(map);
 			
-		  
+		    var legend1 = L.control({position: 'bottomright'}); // Try the other three corners if you like.
+
+              legend1.onAdd = function (map) {
+
+                 var div = L.DomUtil.create('div', 'legend'),
+				labels = [ "ash", "black cherry", "basswood", "box elder", "bur oak", "butternut", "elm", "norway maple", "red oak", "shagbark hickory", "silver maple", "sugar maple", "swamp white oak", "white oak"]; // The break values to define the intervals of population, note we begin from 0 here
+
+				div.innerHTML = '<b>1990 <br></b>'; // The legend title (HTML-based), in this case it's Population Density 2011
+
+				// Loop through our the classes and generate a label with a color box for each interval.
+				// If you are creating a choropleth map, you DO NOT need to change lines below.
+				for (var i = 0; i < labels.length; i++) {
+					div.innerHTML +=
+				
+					'<i style="background:' + Classify(labels[i]) + '"></i>' +
+					(labels[i] ?  labels[i] + '<br>' : '+');
+				}
+
+                  return div;
+              };
+             
 		  
 
 		  var legend2 = L.control({position: 'bottomright'}); // Try the other three corners if you like.
