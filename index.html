@@ -238,12 +238,12 @@
 		  L.control.layers(basemaps).addTo(map);
 		  
 		    map.on('baselayerchange', function(eventLayer){
-          if (eventLayer.name === '1990'){
+          if (eventLayer.name === 'old'){
             map.removeControl(currentlegend);
             currentlegend = legend_q;
             legend_q.addTo(map);
           }
-          else if (eventLayer.name === '2018'){
+          else if (eventLayer.name === 'modern'){
             map.removeControl(currentlegend);
             currentlegend = legend_ei;
             legend_ei.addTo(map);
